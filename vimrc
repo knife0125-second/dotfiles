@@ -25,10 +25,10 @@ set vb t_vb=
 "---------------------------
 " bundleで管理するディレクトリを指定
 set runtimepath+=~/.vim/bundle/neobundle.vim/
- 
+
 " Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
- 
+
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
 " NERDTreeを設定
@@ -45,35 +45,19 @@ NeoBundle 'grep.vim'
 """ シンタックスチェック
 NeoBundle 'scrooloose/syntastic'
 
+""" color scheme (ColorScheme Gallery: http://cocopon.me/app/vim-color-gallery/)
+NeoBundle 'tomasr/molokai'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'w0ng/vim-hybrid'
+
 call neobundle#end()
- 
+
 " Required:
 filetype plugin indent on
- 
+
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
 " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
 NeoBundleCheck
- 
-"---------------
-"検索関連の設定
-"---------------
-"検索の時に大文字と小文字を区別しない
-set ignorecase
-"検索の時に大文字が含まれている場合は区別して検索する
-set smartcase
-"最後まで検索したら先頭に戻る
-set wrapscan
-"検索結果の文字列のハイライトを有効にする
-set hlsearch
-"インクリメンタルサーチを使用する
-set incsearch
-"インクリメンタルサーチを使用しない
-"set noincsearch
-" <Esc>2回でハイライトを消す
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
-"ビジュアルで選択検索
-"vnoremap * "zy:let @/ = @z<CR>n
 
 "--------------------------
 " 表示に関する基本的な設定
@@ -84,7 +68,11 @@ syntax on
 " ファイルの拡張子によってインデントなどをよしなにしてくれる
 "filetype plugin indent on
 " カラースキーマの設定(カラースキーマを~/.vim/colors/以下のディレクトリに配置)
-colorscheme evening
+"colorscheme evening
+colorscheme badwolf
+"colorscheme molokai
+"colorscheme hybrid
+
 " タブ文字をCTL-Iで表示し、行末に$で表示する。
 "set list
 "set listchars=eol:&,tab:>\ ,extends:<,trail:~ "行末:&, タブ: > , trail(半角スペース): ~, extendsはわからない。
@@ -108,6 +96,27 @@ match ZenkakuSpace /　\+/
 " 行末のスペースを赤くハイライトさせる設定(ZenkakuSpaceのハイライトと競合する模様?)
 " highlight WhitespaceEOL ctermbg=red guibg=red
 " match WhitespaceEOL /\s\+$/
+
+"---------------
+"検索関連の設定
+"---------------
+"検索の時に大文字と小文字を区別しない
+set ignorecase
+"検索の時に大文字が含まれている場合は区別して検索する
+set smartcase
+"最後まで検索したら先頭に戻る
+set wrapscan
+"検索結果の文字列のハイライトを有効にする
+set hlsearch
+"インクリメンタルサーチを使用する
+set incsearch
+"インクリメンタルサーチを使用しない
+"set noincsearch
+" <Esc>2回でハイライトを消す
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"ビジュアルで選択検索
+"vnoremap * "zy:let @/ = @z<CR>n
 
 "-------------------------
 "コマンドモードへの設定
@@ -257,12 +266,12 @@ set guioptions+=a
 "NERDTreeの設定
 "---------------
 " 引数なしでvimを起動させた時はNERDTree(のみ)を開く
-"autocmd vimenter * if !argc() | call s:OnlyTree() | endif
-"function! s:OnlyTree()
-"    NERDTree
-"    wincmd l
-"    q
-"endfunction
+" autocmd vimenter * if !argc() | call s:OnlyTree() | endif
+" function! s:OnlyTree()
+"     NERDTree
+"     wincmd l
+"     q
+" endfunction
 
 "---------------
 "VIMスクリプト
